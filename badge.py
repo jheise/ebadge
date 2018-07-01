@@ -110,7 +110,10 @@ class EBadge(object):
             font = ImageFont.truetype(FONT_PATH, 32)
 
         # write text
-        start_x = self.get_x_pos(font, text) + 4
+        start_x = 12
+        if centered:
+            start_x = self.get_x_pos(font, text) + 4
+
         start_y = self.epd.height/2 - font.getsize("a")[1]/2
         self.epd.draw_string_at(frame_red, start_x, start_y, text, font, COLORED)
         self.epd.display_frame(frame_black, frame_red)
@@ -193,7 +196,7 @@ class EBadge(object):
         retval = True
         if text == "center":
             retval = True
-        elif text == "any"
+        elif text == "any":
             retval = random.choice((True,False))
         else:
             retval = False
